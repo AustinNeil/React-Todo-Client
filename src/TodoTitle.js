@@ -16,4 +16,8 @@ const TitleContainer = styled.span`
     width: 100%;
     color: #E1BC29;
     font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `;

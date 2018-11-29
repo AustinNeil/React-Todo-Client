@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-const TodoAdd = ({addTodo}) => {
+const TodoAdd = props => {
     let input;
     return(
         <div>
@@ -8,9 +8,13 @@ const TodoAdd = ({addTodo}) => {
             ref={node => {
                 input = node;
             }}/>
-            <Button onClick={() => {
-                addTodo(input.value);
-                input.value = '';
+            <Button onClick={(event) => {
+                if(input.value === ''){
+                    props.handleError("Cannot add empty Todo Item");
+                } else {
+                    props.addTodo(input.value);
+                    input.value = '';
+                }
             }}> Add </Button>
         </div>
     );
@@ -25,7 +29,7 @@ const Input = styled.input`
     box-sizing: content-box;
     width: 9em;
     height: 1em;
-    margin: 10px 7px 10px 0;
+    margin: 10px 7px 5px 0;
     padding: 10px 20px;
     border: 1px solid #b7b7b7;
     -webkit-border-radius: 10px;

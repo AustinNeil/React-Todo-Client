@@ -3,8 +3,6 @@ import TodoItem from './TodoItem';
 import styled from 'styled-components';
 const TodoList = props => {
     // Map through all todos
-    console.log(props);
-    console.log(props.todos);
     const todoNode = props.todos.map((todo) => {
         return (<TodoItem todo={todo} key={todo.id} remove={props.remove}/>)
     })

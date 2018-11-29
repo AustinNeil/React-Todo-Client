@@ -2,13 +2,17 @@ import React, {Component} from 'react';
 import TodoAdd from './TodoAdd';
 import TodoTitle from './TodoTitle';
 import TodoList from './TodoList';
+import ErrorModal from './ErrorModal';
+import styled from 'styled-components';
 // Container, Should store the State
 window.id = 0;
 export default class TodoContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
-            data: [{text: "hi", id: 6}, {text:"hello",id: 7}]
+            data: [{text: "Get Socks for Matt", id: 6}, {text:"Laundry",id: 7}],
+            showError: false,
+            errorMessage: 'Error!'
         }
     }
     // add handler
@@ -18,7 +22,7 @@ export default class TodoContainer extends Component {
             const data = [...state.data, todo];
             return{data}
         })
-    }
+    };
     // remove handler
     handleRemove(id){
         const remainder = this.state.data.filter((todo) => {
@@ -27,17 +31,45 @@ export default class TodoContainer extends Component {
             }
         });
         this.setState({data: remainder});
-    }
+    };
+    // handle errors
+    handleError(e){
+        this.setState((prevState) => {
+            return {
+                showError: !prevState.showError,
+                errorMessage: e
+            }
+        })
+        setTimeout(function(){
+            this.setState(() => {
+                return {
+                    showError: false,
+                    errorMessage: ''
+                }
+            })
+        }.bind(this),3500);
+    };
     render(){
         return(
             <div>
-                <TodoTitle/>
-                <TodoAdd addTodo={this.addTodo.bind(this)}/>
-                <TodoList 
-                    todos={this.state.data}
-                    remove={this.handleRemove.bind(this)}
-                />
+                <ErrorModal showError={this.state.showError} errorMessage={this.state.errorMessage} handleError={this.handleError.bind(this)}/>
+                <Container>
+                    <TodoTitle/>
+                    <TodoAdd addTodo={this.addTodo.bind(this)} handleError={this.handleError.bind(this)}/>
+                    <TodoList 
+                        todos={this.state.data}
+                        remove={this.handleRemove.bind(this)}
+                    />
+                </Container>
             </div>
         )
     }
 }
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    align-items: center;
+    justify-content: center;
+`;

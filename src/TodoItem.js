@@ -15,7 +15,7 @@ const ItemContainer = styled.li`
     list-style-type: none;
     font-size: 1.2em;
     padding: 0 0 0 0;
-    margin: 10px 0 10px 0;
+    margin: 10px 0 20px 0;
     font-size: 1.4em;
     text-align: center;
 `;
@@ -24,4 +24,6 @@ const Item = styled.div`
     border: 1px solid black;
     padding: 0;
     margin: 0;
+    width: 250px;
+    height: 25px;
 `;
