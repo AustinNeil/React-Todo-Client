@@ -11,9 +11,10 @@ const TodoAdd = props => {
             }}/>
             <Button onClick={(event) => {
                 if(input.value === ''){
+                    event.preventDefault();
                     props.handleError("Cannot add empty Todo Item");
                 } else {
-                    event.preventDefault()
+                    event.preventDefault();
                     props.addTodo(input.value);
                     input.value = '';
                 }
