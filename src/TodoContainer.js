@@ -8,7 +8,7 @@ export default class TodoContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
-            data: []
+            data: [{text: "hi", id: 6}, {text:"hello",id: 7}]
         }
     }
     // add handler
