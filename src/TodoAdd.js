@@ -4,6 +4,7 @@ const TodoAdd = props => {
     let input;
     return(
         <div>
+            <form>
             <Input placeholder={"Add a new item"}
             ref={node => {
                 input = node;
@@ -12,10 +13,12 @@ const TodoAdd = props => {
                 if(input.value === ''){
                     props.handleError("Cannot add empty Todo Item");
                 } else {
+                    event.preventDefault()
                     props.addTodo(input.value);
                     input.value = '';
                 }
             }}> Add </Button>
+            </form>
         </div>
     );
 };
