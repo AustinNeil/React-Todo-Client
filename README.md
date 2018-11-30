@@ -4,6 +4,8 @@
 - React
     - Functional & Class Components
 - Styled-Components
+- CSS
+
 
 
 

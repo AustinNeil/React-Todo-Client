@@ -10,7 +10,7 @@ export default class TodoContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
-            data: [{text: "Get Socks for Matt", id: 6}, {text:"Laundry",id: 7}],
+            data: [{text: "Get Socks for Riley", id: 6}, {text:"Dinner with Austin",id: 7},{text: "Get Socks for Jenny", id: 6}, {text: "Help Austin order pizzas",id: 7}],
             showError: false,
             errorMessage: 'Error!'
         }
@@ -54,7 +54,7 @@ export default class TodoContainer extends Component {
             <div>
                 <ErrorModal showError={this.state.showError} errorMessage={this.state.errorMessage} handleError={this.handleError.bind(this)}/>
                 <Container>
-                    <TodoTitle/>
+                    <TodoTitle title='To-do List'/>
                     <TodoAdd addTodo={this.addTodo.bind(this)} handleError={this.handleError.bind(this)}/>
                     <TodoList 
                         todos={this.state.data}

@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-const TodoTitle = () => {
+import PropTypes from 'prop-types';
+const TodoTitle = props => {
     return(
-        <TitleContainer>To-Do List</TitleContainer>
+        <TitleContainer>{props.title}</TitleContainer>
     )
 }
-
+TodoTitle.propTypes = {
+    title: PropTypes.string
+};
 export default TodoTitle;
 
 const TitleContainer = styled.span`

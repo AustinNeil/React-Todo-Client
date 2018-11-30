@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 const TodoAdd = props => {
     let input;
     return(
@@ -24,6 +25,11 @@ const TodoAdd = props => {
     );
 };
 
+TodoAdd.propTypes = {
+    handleError: PropTypes.func,
+    addTodo: PropTypes.func
+};
+
 export default TodoAdd;
 
 const Input = styled.input`
@@ -38,13 +44,13 @@ const Input = styled.input`
     border: 1px solid #b7b7b7;
     -webkit-border-radius: 10px;
     border-radius: 23px;
-    font: normal 18px/normal "Times New Roman", Times, serif;
+    font-size: 1.2em;
+    font-family: "Lato";
     color: rgba(255,255,255,1);
     -o-text-overflow: clip;
     text-overflow: clip;
     word-spacing: 6px;
     background: #78909C;
-    text-shadow: 1px 1px 0 rgba(255,255,255,0.66);
     &::-webkit-input-placeholder {
         color: white;
       }
@@ -56,8 +62,9 @@ const Button = styled.button`
     box-sizing: content-box;
     border: 1px solid #018dc4;
     -webkit-border-radius: 23px;
-    border-radius: 23px;
-    font: normal 16px/normal "Times New Roman", Times, serif;
+    border-radius: 10px;
+    font-size: 1.15em;
+    font-family: "Lato";
     color: rgba(0,0,0,0.9);
     -o-text-overflow: clip;
     text-overflow: clip;
